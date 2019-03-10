@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1b63751-f555-490e-bc88-958a6a4d3931" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/bowling/code/Frame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/bowling/code/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bowling/code/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bowling/code/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/bowling/code/FrameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/bowling/code/FrameTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/com/bowling/code/FrameTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="100" column="33" lean-forward="true" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
+            <state relative-caret-position="218">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -42,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/bowling/code/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+            <state relative-caret-position="57">
+              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
               <folding>
                 <element signature="e#630#631#0" expanded="true" />
                 <element signature="e#2212#2213#0" expanded="true" />
@@ -63,6 +62,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>itsCurrentFrame</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
@@ -72,8 +76,8 @@
         <option value="$PROJECT_DIR$/src/com/bowling/code/ThrowTest.groovy" />
         <option value="$PROJECT_DIR$/src/com/bowling/code/ThrowTest.java" />
         <option value="$PROJECT_DIR$/src/com/bowling/code/Frame.java" />
-        <option value="$PROJECT_DIR$/src/com/bowling/code/Game.java" />
         <option value="$PROJECT_DIR$/src/test/com/bowling/code/FrameTest.java" />
+        <option value="$PROJECT_DIR$/src/com/bowling/code/Game.java" />
       </list>
     </option>
   </component>
@@ -224,9 +228,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_com_bowling_code_in_agile - 2019.03.10 at 18h 45m 23s.xml">
-      <configuration name="test.com.bowling.code in agile" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="test_com_bowling_code_in_agile - 2019.03.10 at 18h 54m 52s.xml">
       <configuration name="test.com.bowling.code in agile" configurationId="JUnit" />
     </history-entry>
@@ -252,6 +253,9 @@
       <configuration name="test.com.bowling.code in agile" configurationId="JUnit" />
     </history-entry>
     <history-entry file="test_com_bowling_code_in_agile - 2019.03.10 at 19h 12m 29s.xml">
+      <configuration name="test.com.bowling.code in agile" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="test_com_bowling_code_in_agile - 2019.03.10 at 19h 18m 34s.xml">
       <configuration name="test.com.bowling.code in agile" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -314,6 +318,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/junit-4.12.jar!/junit/framework/TestCase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
+          <folding>
+            <element signature="e#5472#5473#0" expanded="true" />
+            <element signature="e#5525#5526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bowling/code/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -329,15 +344,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/bowling/code/FrameTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="100" column="33" lean-forward="true" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
+        <state relative-caret-position="218">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bowling/code/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+        <state relative-caret-position="57">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
           <folding>
             <element signature="e#630#631#0" expanded="true" />
             <element signature="e#2212#2213#0" expanded="true" />

@@ -98,7 +98,7 @@ public class FrameTest {
         game.add(3);
         game.add(2);
         assertEquals(13,game.scoreForFrame(1));
-        assertEquals(13,game.scoreForFrame(2));
+        assertEquals(18,game.scoreForFrame(2));
         assertEquals(18,game.score());
         assertEquals(3, game.getCurrentFrame());
     }
