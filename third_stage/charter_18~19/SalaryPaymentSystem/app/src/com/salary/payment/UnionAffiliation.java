@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnionAffiliation implements Affiliation{
+    private Double mDues;
+    private Long mMemberId;
     private List<ServiceCharge> mServiceCharge;
 
-    public UnionAffiliation(long memberId, int i) {
+    public UnionAffiliation(long memberId, double dues) {
+        mDues = dues;
+        mMemberId = memberId;
         mServiceCharge = new ArrayList<>();
     }
 
@@ -19,6 +23,10 @@ public class UnionAffiliation implements Affiliation{
     }
 
     public double getDues() {
-        return 0;
+        return mDues;
+    }
+
+    public long getMemberId() {
+        return mMemberId;
     }
 }

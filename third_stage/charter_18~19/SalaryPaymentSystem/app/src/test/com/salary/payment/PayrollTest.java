@@ -156,7 +156,7 @@ public class PayrollTest {
         assertTrue(af instanceof UnionAffiliation);
         UnionAffiliation uaf = (UnionAffiliation) af;
 
-        assertEquals(99.42f, uaf.getDues());
+        assertEquals(99.42d, uaf.getDues());
 
         Employee employee1 = GPayrollDatabase.getUnionMember(memberId);
         assertNotNull(employee1);

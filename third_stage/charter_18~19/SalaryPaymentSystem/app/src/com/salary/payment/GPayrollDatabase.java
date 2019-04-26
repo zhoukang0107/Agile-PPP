@@ -30,4 +30,8 @@ public class GPayrollDatabase {
     public static Employee getUnionMember(Long memberId){
         return itsUnionMember.get(memberId);
     }
+
+    public static void removeUnionMember(long memberId) {
+        itsUnionMember.remove(memberId);
+    }
 }
