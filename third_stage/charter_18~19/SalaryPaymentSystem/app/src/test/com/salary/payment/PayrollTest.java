@@ -99,6 +99,68 @@ public class PayrollTest {
         assertNotNull(serviceCharge);
 
         assertEquals(25, serviceCharge.getAmount());
+    }
+
+    @Test
+    public void testChangeNameEmployee(){
+        long empId = 6;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId,"shanghai", "jack", 250);
+        t.execute();
+
+        ChangeEmployeeTransaction change = new ChangeNameTransaction(empId, "daling");
+        change.execute();
+
+        Employee employee = GPayrollDatabase.getEmployee(empId);
+        assertNotNull(employee);
+
+        assertEquals(employee.getName(), "daling");
+    }
+
+    @Test
+    public void testChangeHourlyTransaction(){
+        long empId = 7;
+        AddCommissionedEmployee t = new AddCommissionedEmployee(empId,"shanghai", "jack", 25000, 2.1f);
+        t.execute();
+
+        ChangeHourlyTransaction changeHourlyTransaction = new ChangeHourlyTransaction(empId, 200);
+        changeHourlyTransaction.execute();
+
+        Employee employee = GPayrollDatabase.getEmployee(empId);
+        assertNotNull(employee);
+
+        assertNotNull(employee.getClassification());
+        assertTrue(employee.getClassification() instanceof HourlyClassification);
+        assertEquals(200f, ((HourlyClassification)employee.getClassification()).getRate());
+
+        assertTrue(employee.getSchedule() instanceof WeeklySchedule);
+        assertNotNull(employee.getSchedule());
+
+    }
+
+    @Test
+    public void testChangeMemberTransaction(){
+        long empId = 8;
+        long memberId = 100;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId,"shanghai", "jack", 200);
+        t.execute();
+
+        ChangeMemberTransaction cmt = new ChangeMemberTransaction(empId, memberId, 99.42);
+        cmt.execute();
+
+        Employee employee = GPayrollDatabase.getEmployee(empId);
+        assertNotNull(employee);
+
+        Affiliation af = employee.getAffiliation();
+        assertNotNull(af);
+
+        assertTrue(af instanceof UnionAffiliation);
+        UnionAffiliation uaf = (UnionAffiliation) af;
+
+        assertEquals(99.42f, uaf.getDues());
+
+        Employee employee1 = GPayrollDatabase.getUnionMember(memberId);
+        assertNotNull(employee1);
+        assertSame(employee, employee1);
 
 
     }

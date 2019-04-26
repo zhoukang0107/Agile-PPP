@@ -13,6 +13,10 @@ public class HourlyClassification implements PaymentClassification {
         mTimeCardList = new ArrayList<>();
     }
 
+    public float getRate() {
+        return mHonrlyRate;
+    }
+
     @Override
     public double getSalary() {
         return 0;

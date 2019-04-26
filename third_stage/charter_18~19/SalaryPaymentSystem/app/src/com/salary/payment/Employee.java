@@ -53,4 +53,8 @@ public class Employee {
     public Affiliation getAffiliation(){
         return mAffiliation;
     }
+
+    public void setName(String name) {
+        mName = name;
+    }
 }
