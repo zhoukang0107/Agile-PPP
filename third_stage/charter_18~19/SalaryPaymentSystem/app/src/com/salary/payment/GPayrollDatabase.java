@@ -1,6 +1,8 @@
 package com.salary.payment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GPayrollDatabase {
@@ -33,5 +35,13 @@ public class GPayrollDatabase {
 
     public static void removeUnionMember(long memberId) {
         itsUnionMember.remove(memberId);
+    }
+
+    public static List<Long> getAllEmployeeIds() {
+        List<Long> empIds = new ArrayList<>();
+        for (Long empId :itsEmployees.keySet()){
+            empIds.add(empId);
+        }
+        return empIds;
     }
 }

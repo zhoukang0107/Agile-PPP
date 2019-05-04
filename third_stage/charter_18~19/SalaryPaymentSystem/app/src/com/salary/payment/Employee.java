@@ -57,4 +57,24 @@ public class Employee {
     public void setName(String name) {
         mName = name;
     }
+
+    public void payDate(PayCheck payCheck) {
+        double grossPay = mClassification.calculatePay(payCheck);
+        double deductions = mAffiliation.calculateDeductions();
+        double netPay = grossPay - deductions;
+        payCheck.setGrossPay(grossPay);
+        payCheck.setDeductions(deductions);
+        payCheck.setNetPay(netPay);
+        mMethod.pay(payCheck);
+
+    }
+
+    public boolean isPayDate(Date payDay) {
+        return mSchedule.isPayDate(payDay);
+    }
+
+    public Object getPayPeriodStartDate(Date payDate) {
+
+
+    }
 }

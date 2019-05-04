@@ -29,4 +29,11 @@ public class UnionAffiliation implements Affiliation{
     public long getMemberId() {
         return mMemberId;
     }
+
+    @Override
+    public double calculateDeductions() {
+        //double totalDues = 0;
+        //int fridays = NumberOfFridaysInPayPeriod()
+        return 0.0f;
+    }
 }

@@ -1,9 +1,6 @@
 package com.salary.payment;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class HourlyClassification implements PaymentClassification {
     private float mHonrlyRate;
@@ -20,6 +17,33 @@ public class HourlyClassification implements PaymentClassification {
     @Override
     public double getSalary() {
         return 0;
+    }
+
+    @Override
+    public double calculatePay(PayCheck payCheck) {
+        double totalPay = 0;
+        Date payPeriod = payCheck.getPayDate();
+        for (TimeCard card : mTimeCardList){
+            if (isInPayPeriod(card, payPeriod)){
+                totalPay += calculatePayForTimeCard(card);
+            }
+        }
+
+        return 0;
+    }
+
+    private boolean isInPayPeriod(TimeCard card, Date payPeriod) {
+        Date payPeriodEndDate = payPeriod;
+        //Date payPeriodStartDate = payPeriod - 5;
+
+        return false;
+    }
+
+    private double calculatePayForTimeCard(TimeCard card) {
+        double hours = card.getHours();
+        double overTime = Math.max(0.0, hours - 8);
+        double straightTime = hours - overTime;
+        return straightTime * mHonrlyRate + overTime * mHonrlyRate * 1.5;
     }
 
     public void addTimeCard(TimeCard timeCard) {

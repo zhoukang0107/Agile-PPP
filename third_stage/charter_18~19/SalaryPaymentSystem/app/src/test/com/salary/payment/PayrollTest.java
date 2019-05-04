@@ -165,4 +165,162 @@ public class PayrollTest {
 
     }
 
+    @Test
+    public void testPaySingleSalariedEmployee(){
+        long empId = 8;
+        AddSalariedEmployee t = new AddSalariedEmployee(empId,"china","Bob",1000);
+        t.execute();
+        Date payDate = new Date(2019,4,31);
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        PayCheck pc = pt.getPayCheck();
+        assertNotNull(pc);
+        assertEquals(payDate, pc.getPayDate());
+        assertEquals(1000, pc.getGrossPay());
+        assertEquals(0.0, pc.getDeductions());
+        assertEquals(1000, pc.getNetPay());
+    }
+
+    @Test
+    public void testPaySingleSalariedEmployeeOnWrongDate(){
+        long empId = 9;
+        AddSalariedEmployee t = new AddSalariedEmployee(empId, "Bob2", "Home", 1000);
+        t.execute();
+
+        Date payDate = new Date(2019, 4,30);
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        PayCheck pc = pt.getPayCheck();
+        assertNotNull(pc);
+    }
+
+    @Test
+    public void testPaySingleHourlyEmployeeNoTimeCards(){
+        long empId = 10;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId, "home", "Bon3", 18.0f);
+        t.execute();
+        Date payDate = new Date(2019, 4, 25);
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        ValidatePayCheck(pt, empId, payDate, 0.0);
+
+
+    }
+
+    private void ValidatePayCheck(PaydayTransaction pt, long empId, Date payDate, double pay) {
+        PayCheck pc = pt.getPayCheck();
+        assertNotNull(pc);
+        assertEquals(pc.getPayDate(), payDate);
+        assertEquals(pay, pc.getGrossPay());
+        assertEquals("Hold", pc.getField("Disposition"));
+        assertEquals(0.0 , pc.getDeductions());
+        assertEquals(pay, pc.getNetPay());
+    }
+
+    @Test
+    public void testPaySingleHourlyEmployeeOneTimeCard(){
+        long empId = 11;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId, "Bill", "Home", 18.25f);
+        t.execute();
+        Date payDate = new Date(2019, 4, 25);
+
+        TimecardTransaction tc = new TimecardTransaction(empId, payDate, 3.0f);
+        tc.execute();
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        ValidatePayCheck(pt, empId, payDate, 50);
+    }
+
+    @Test
+    public void testPaySingleHourlyEmployeeOvertimeOneTimeCard(){
+        long empId = 12;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId, "Bill", "Home", 25);
+        t.execute();
+        Date payDate = new Date(2019,4, 24);
+
+        TimecardTransaction tc = new TimecardTransaction(empId, payDate, 9.0f);
+        tc.execute();
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        ValidatePayCheck(pt, empId, payDate, (8 + 1.5)*14.25);
+
+    }
+
+    @Test
+    public void testPaySingleHourlyEmployeeOnWrongDate(){
+        long empId = 13;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId, "beijing", "Bill", 20.0f);
+        t.execute();
+        Date payDate = new Date(2019, 4, 26);
+
+        TimecardTransaction tc = new TimecardTransaction(empId, payDate, 9.0f);
+        tc.execute();
+
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+
+        PayCheck pc = pt.getPayCheck();
+        assertNotNull(pc);
+
+
+    }
+
+    @Test
+    public void testPaySingleHourlyEmployeeTwoTimeCards(){
+        long empId = 15;
+        AddHourlyEmployee t = new AddHourlyEmployee(empId, "Bill", "Home", 18);
+        t.execute();
+        Date payDate = new Date(2019, 4, 26);
+
+        TimecardTransaction tc = new TimecardTransaction(empId, payDate, 2);
+        tc.execute();
+
+        TimecardTransaction tc2 = new TimecardTransaction(empId, payDate, 5.0f);
+        tc2.execute();
+
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+
+        ValidatePayCheck(pt, empId, payDate, 7*26);
+    }
+
+
+    @Test
+    public void testPaySingleHourlyEmployeeWithTimeCardsSpanningTwoPayPeriods(){
+        long empId = 15;
+        AddHourlyEmployee t = new AddHourlyEmployee(2019, "shanghai", "Home", 25.0f);
+        t.execute();
+        Date payDaye = new Date(2019, 4, 21);
+        Date dateInPreviousPayPeriod = new Date(2019, 4, 15);
+
+        TimecardTransaction tc = new TimecardTransaction(empId, payDaye, 2.0f;
+        tc.execute();
+        TimecardTransaction tc2 = new TimecardTransaction(empId, dateInPreviousPayPeriod, 5.0f);
+        tc2.execute();
+
+        PaydayTransaction pt = new PaydayTransaction(payDaye);
+        pt.execute();
+
+        ValidatePayCheck(pt, empId, payDaye, 2* 25.0f);
+    }
+
+    @Test
+    public void testSalariedUnionMemberDues(){
+        long empId = 15;
+        AddSalariedEmployee t = new AddSalariedEmployee(empId,"", "", 1000);
+        t.execute();
+
+        int memberId = 7734;
+        ChangeMemberTransaction cmt = new ChangeMemberTransaction(empId, memberId, 9);
+        cmt.execute();
+        Date payDate = new Date(4,31, 2019);
+        PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+
+        ValidatePayCheck(pt, empId, payDate, 1000 - 9);
+    }
+
+
+
+
 }
